@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" fill="none" aria-hidden="true">
+  <g fill="currentColor">
+    <path d="M12 12h30c11 0 18 7.5 18 20v34c0 16-10.5 26-27 26H12V12zm30 62c0 5.5-3 8.5-8 8.5H32V30h10v44z"/>
+    <path d="M78 12h28l36 56V12h26v76H140L104 32v56H78V12z"/>
+    <path d="M190 12h26v76h-26V12z"/>
+    <path d="M224 12l40 32-40 44h30l26-30 14 30h28L286 48l40-36h-30l-26 30L254 12h-30z"/>
+    <path d="M338 12h28l36 56V12h26v76H400L364 32v56h-26V12z"/>
+    <path fill-rule="evenodd" d="M456 50c0-23.5 16-40 38-40s38 16.5 38 40-16 40-38 40-38-16.5-38-40zm56 0c0-12-7.5-20-18-20s-18 8-18 20 7.5 20 18 20 18-8 18-20z"/>
+    <rect x="460" y="46" width="20" height="8" rx="1"/>
+    <path d="M540 12h26l12 52 12-52h24l12 52 12-52h26l-26 76h-28l-12-50-12 50h-28L540 12z"/>
+  </g>
+  <text x="280" y="118" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-size="14" letter-spacing="0.45em" font-weight="400">MARKETING SOLUTION</text>
+</svg>

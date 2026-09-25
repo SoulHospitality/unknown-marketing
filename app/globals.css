@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+/* Official palette: https://coolors.co/212121-ebe4de-f0dbd6-bf9990-b2b2b2 */
+:root {
+  --charcoal: #212121;
+  --sand: #ebe4de;
+  --blush: #f0dbd6;
+  --nude: #bf9990;
+  --mist: #b2b2b2;
+  --background: var(--sand);
+  --foreground: var(--charcoal);
+  --muted: var(--mist);
+  --accent: var(--nude);
+  --site-max: 1500px;
+  --page-pad: max(1.25rem, env(safe-area-inset-left, 0px));
+  --page-pad-r: max(1.25rem, env(safe-area-inset-right, 0px));
+  --header-offset: calc(4.5rem + env(safe-area-inset-top, 0px));
+}
+
+@theme inline {
+  --color-charcoal: var(--charcoal);
+  --color-nude: var(--nude);
+  --color-sand: var(--sand);
+  --color-blush: var(--blush);
+  --color-mist: var(--mist);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Cormorant Garamond", "Times New Roman", serif;
+  --font-ui: "Outfit", system-ui, sans-serif;
+  --font-script: "Great Vibes", cursive;
+  --breakpoint-xs: 390px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Outfit", system-ui, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  min-width: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Consistent page width: phone → tablet → desktop → TV / 4K */
+.site-container {
+  width: 100%;
+  max-width: var(--site-max);
+  margin-inline: auto;
+  padding-inline: var(--page-pad) var(--page-pad-r);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --page-pad: max(1.5rem, env(safe-area-inset-left, 0px));
+    --page-pad-r: max(1.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-pad: max(2.5rem, env(safe-area-inset-left, 0px));
+    --page-pad-r: max(2.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --site-max: 1680px;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --site-max: 1920px;
+    --page-pad: max(3.5rem, env(safe-area-inset-left, 0px));
+    --page-pad-r: max(3.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+::selection {
+  background: var(--nude);
+  color: var(--charcoal);
+}
+
+/* Primary — Modern & Bold */
+h1,
+h2,
+h3,
+.font-display {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  overflow: visible;
+  text-rendering: geometricPrecision;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.leading-display {
+  line-height: 1.05;
+  padding-bottom: 0.08em;
+}
+
+.leading-display-tight {
+  line-height: 1.02;
+  padding-bottom: 0.1em;
+}
+
+.clip-text {
+  overflow: hidden;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.08em;
+}
+
+.font-elegant {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.font-script {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+}
+
+.eyebrow {
+  font-family: "Outfit", system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mist);
+  font-weight: 400;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* Touch-friendly controls */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.img-zoom {
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .img-zoom {
+    transform: scale(1.06);
+    filter: brightness(1.05);
+  }
+}
+
+.lift {
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
+    box-shadow 0.55s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(33, 33, 33, 0.12);
+  }
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.services-scroller {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: auto;
+}
+.services-scroller::-webkit-scrollbar {
+  display: none;
+  height: 0;
+}
+
+/* Admin CMS atmosphere */
+@keyframes admin-orb-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(24px, -18px, 0) scale(1.08);
+  }
+}
+
+@keyframes admin-orb-float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-30px, 20px, 0) scale(1.12);
+  }
+}
+
+@keyframes admin-save-pulse {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0.7;
+  }
+}
+
+.admin-orb {
+  animation: admin-orb-float 9s ease-in-out infinite;
+}
+
+.admin-orb-slow {
+  animation: admin-orb-float-slow 14s ease-in-out infinite;
+}
+
+.admin-save-pulse {
+  transform-origin: left;
+  animation: admin-save-pulse 1.1s ease-in-out infinite;
+}
+
+.admin-card-shine {
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(191, 153, 144, 0.18) 45%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+}
+
+.admin-card:hover .admin-card-shine {
+  animation: admin-shine 0.9s ease forwards;
+}
+
+@keyframes admin-shine {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -40% 0;
+  }
+}
+
+/* Coarse pointers (phones / tablets / TV remotes): prefer native UX */
+@media (pointer: coarse) {
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: auto !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 389px) {
+  .eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+/* Landscape phones: keep heroes usable */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-compact {
+    min-height: auto !important;
+    padding-top: 5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
